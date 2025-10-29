@@ -34,6 +34,7 @@ import pandas as pd
 import numpy as np
 
 st.write("스트림릿은 넓은 범위의 데이터 시각화를 지원해. 📊 그리고 20개가 넘는 입력 위젯을 쉽게 시각화할 수 있지!")
+st.write("참고로 이렇게 [인터넷 링크](https://www.naver.com/)도 첨부할 수 있다구~")
 
 all_users = ["가현", "나현", "다현","라현"]
 with st.container(border=True):
