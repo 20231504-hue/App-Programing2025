@@ -28,3 +28,23 @@ st.write('button을 이용해 버튼도 만들 수 있어. 이 버튼은 평소�
 if st.button("풍선을 보내자!"):
     st.balloons()
 st.write('if문을 이용해 F가 T가 되었을 때, balloons 명령어로 **:rainbow[풍선]**을 보내는거야!')
+
+import streamlit as st
+import pandas as pd
+import numpy as np
+
+st.write("스트림릿은 넓은 범위의 데이터 시각화를 지원해. 📊 그리고 20개가 넘는 입력 위젯을 쉽게 시각화할 수 있지!")
+
+all_users = ["가현", "나현", "다현","라현"]
+with st.container(border=True):
+    users = st.multiselect("Users", all_users, default=all_users)
+    rolling_average = st.toggle("Rolling average")
+
+np.random.seed(42)
+data = pd.DataFrame(np.random.randn(15, len(users)), columns=users)
+if rolling_average:
+    data = data.rolling(7).mean().dropna()
+
+tab1, tab2 = st.tabs(["차트", "데이터 표"])
+tab1.line_chart(data, height=200)
+tab2.dataframe(data, height=200, use_container_width=True)
